@@ -10,4 +10,4 @@ Paper LINK: [https://www.cs.cmu.edu/~maxim/files/planwithhomotopyconstraints_aaa
 ## demo  
 Search-based Path Planning with Homotopy Class Constraints  
 
-<img src="https://github.com/scomup/homotopy/demo.gif" width="640">  
+<img src="https://github.com/scomup/homotopy/blob/master/demo.gif" width="640">  
