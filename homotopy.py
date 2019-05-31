@@ -155,8 +155,8 @@ if __name__ == "__main__":
     
     dijkstra = Dijkstra(nodes, edges, obsts)
     path = dijkstra.find((0,0), (7,7))
-
     paths = dijkstra.allpath()
+    
     print len(paths)
 
     for path in paths:

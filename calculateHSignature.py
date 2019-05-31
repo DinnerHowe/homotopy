@@ -40,7 +40,7 @@ def calculateHSignature(path, obsts):
                 diff = obst_l - obst_j
                 Al = Al / diff
             """
-            Al = 1000
+            Al = complex(1,1)
             diff2 = np.abs(z2-obst_l)
             diff1 = np.abs(z1-obst_l)
 
@@ -65,13 +65,21 @@ def calculateHSignature(path, obsts):
 h_signature_prescaler = 1.0
 
 if __name__ == '__main__':
-    path = [(8, 8), (7, 7), (6, 6), (5, 6), (4, 5), (3, 4), (2, 3), (1, 2), (0, 1), (0, 0)]
-    obsts = []
-    obsts.append((1,1))
-    obsts.append((5,5))
-    obsts.append((3,3))
-    obsts.append((2,6))
-    obsts.append((6,2))
-    print calculateHSignature(path, obsts)
+    #path = [(0.5,0.5),(1.5,0.5),(1.5,1.5),(0.5,1.5),(0.5,0.5)]
 
-      
+    obsts = []
+    obsts.append((1.,1.))
+    obsts.append((2.2,2.4))
+    path = [(0.5,0.5),(1.5,0.5),(1.5,1.5)]
+    l1 = calculateHSignature(path, obsts)
+    print l1
+
+    path = [(0.5,0.5),(2.5,0.5),(1.5,1.5)]
+    l2 = calculateHSignature(path, obsts)
+    print l2
+    path = [(0.5,0.5),(0.5,1.5),(1.5,1.5)]
+    l3 = calculateHSignature(path, obsts)  
+
+    print l3
+
+    print l1 - l3
