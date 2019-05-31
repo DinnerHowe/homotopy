@@ -13,6 +13,16 @@ from  calculateHSignature import calculateHSignature
 
 colorlist = ['#1f77b4','#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2','#7f7f7f', '#bcbd22', '#17becf']
 
+direct = []
+direct.append((-1,-1))
+direct.append((-1,0))
+direct.append((-1,1))
+direct.append((0,-1))
+direct.append((0,1))
+direct.append((1,-1))
+direct.append((1,0))
+direct.append((1,+1))
+
 def drawnode(nodes):
     for node in nodes:
         for d in direct:
@@ -39,18 +49,7 @@ class Dijkstra:
         self.edges = edges
         self.obsts = obsts
         self.homotopy = []
-        self.direct = []
-        self.direct.append((-1,-1))
-        self.direct.append((-1,0))
-        self.direct.append((-1,1))
-        self.direct.append((0,-1))
-        self.direct.append((0,1))
-        self.direct.append((1,-1))
-        self.direct.append((1,0))
-        self.direct.append((1,+1))
         self.cnt = 0
-
-
 
     def find(self, f, t):
         self.f = f
@@ -97,10 +96,11 @@ class Dijkstra:
                 paths.append(copy.copy(path))
                 self.homotopy.append(l)
                 drawpath (path, colorlist[ len(self.homotopy) % len(colorlist)], 10. / len(self.homotopy) )
-                plt.pause(0.01)
+
+                plt.pause(0.5)
 
             return
-        for d in self.direct:
+        for d in direct:
             connect_node = (node[0] + d[0] , node[1] + d[1])
             if (connect_node in self.mins) and self.mins[connect_node] < self.mins[node]:
                 self.pathfinder(paths, path, connect_node)
@@ -152,8 +152,6 @@ if __name__ == "__main__":
 
     drawobsts(obsts)
     drawnode(nodes)
-
-
     
     dijkstra = Dijkstra(nodes, edges, obsts)
     path = dijkstra.find((0,0), (7,7))
@@ -175,13 +173,5 @@ if __name__ == "__main__":
 
         drawnode(nodes)
         drawobsts(obsts)
-
-
-
-        
-                
-
-
-
     plt.show()
     
